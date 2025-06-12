@@ -6,4 +6,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 add_executable(6502
     src/main.cpp
-  )
+        src/memory.h
+        src/memory.cpp
+        src/CPU.cpp
+        src/CPU.h
+)
