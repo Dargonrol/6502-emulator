@@ -1,14 +1,14 @@
 #include <iostream>
 #include <ctime> // only to generate random values
 
-#include "CPU.h"
+#include "processor.h"
 
 int main() 
 {
     srand(time(nullptr));
-    std::cout << "Hello World";
+    std::cout << "Welcome to the 6502 emulator <3";
 
-    CPU cpu;
+    _6502::CPU cpu;
 
     return 0;
 }

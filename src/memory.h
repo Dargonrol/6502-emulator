@@ -4,38 +4,41 @@
 #include <cstdint>
 #include <cstdlib>
 
-using Byte = std::uint8_t;
-using Word = std::uint16_t;
+namespace _6502 {
 
-struct Memory64k
-{
-public:
-    Memory64k();
+    using Byte = std::uint8_t;
+    using Word = std::uint16_t;
 
-private:
-    std::array<Byte, 0x10000> data_{};
-};
+    struct Memory64k
+    {
+    public:
+        Memory64k();
 
-struct Register8
-{
-public:
-    Byte read() const;
-    void write(Byte data);
+    private:
+        std::array<Byte, 0x10000> data_{};
+    };
 
-    void reset();
+    struct Register8
+    {
+    public:
+        Byte read() const;
+        void write(Byte data);
 
-private:
-    Byte data_ = rand() % 0xFF;
-};
+        void reset();
 
-struct Register16
-{
-public:
-    Word read() const;
-    void write(Word data);
+    private:
+        Byte data_ = rand() % 0xFF;
+    };
 
-    void reset();
+    struct Register16
+    {
+    public:
+        Word read() const;
+        void write(Word data);
 
-private:
-    Word data_ = rand() % 0xFFFF;
-};
+        void reset();
+
+    private:
+        Word data_ = rand() % 0xFFFF;
+    };
+}
