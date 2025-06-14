@@ -2,6 +2,7 @@
 
 #include <array>
 #include <cstdint>
+#include <string>
 
 namespace _6502
 {
@@ -327,5 +328,91 @@ namespace _6502
         Instruction{0xFE, 0, 0, Mnemonic::none, AddressingMode::none},
         Instruction{0xFF, 0, 0, Mnemonic::none, AddressingMode::none}
     };
+
+    inline std::string to_string(Mnemonic m)
+    {
+        switch (m)
+        {
+            case Mnemonic::ADC: return "ADC";
+            case Mnemonic::AND: return "AND";
+            case Mnemonic::ASL: return "ASL";
+            case Mnemonic::BCC: return "BCC";
+            case Mnemonic::BCS: return "BCS";
+            case Mnemonic::BEQ: return "BEQ";
+            case Mnemonic::BIT: return "BIT";
+            case Mnemonic::BMI: return "BMI";
+            case Mnemonic::BNE: return "BNE";
+            case Mnemonic::BPL: return "BPL";
+            case Mnemonic::BRK: return "BRK";
+            case Mnemonic::BVC: return "BVC";
+            case Mnemonic::CLC: return "CLC";
+            case Mnemonic::CLD: return "CLD";
+            case Mnemonic::CLI: return "CLI";
+            case Mnemonic::CLV: return "CLV";
+            case Mnemonic::CMP: return "CMP";
+            case Mnemonic::CPX: return "CPX";
+            case Mnemonic::CPY: return "CPY";
+            case Mnemonic::DEC: return "DEC";
+            case Mnemonic::DEX: return "DEX";
+            case Mnemonic::DEY: return "DEY";
+            case Mnemonic::EOR: return "EOR";
+            case Mnemonic::INC: return "INC";
+            case Mnemonic::INX: return "INX";
+            case Mnemonic::INY: return "INY";
+            case Mnemonic::JMP: return "JMP";
+            case Mnemonic::JSR: return "JSR";
+            case Mnemonic::LDA: return "LDA";
+            case Mnemonic::LDX: return "LDX";
+            case Mnemonic::LDY: return "LDY";
+            case Mnemonic::LSR: return "LSR";
+            case Mnemonic::NOP: return "NOP";
+            case Mnemonic::ORA: return "ORA";
+            case Mnemonic::PHA: return "PHA";
+            case Mnemonic::PHP: return "PHP";
+            case Mnemonic::PLA: return "PLA";
+            case Mnemonic::PLP: return "PLP";
+            case Mnemonic::ROL: return "ROL";
+            case Mnemonic::ROR: return "ROR";
+            case Mnemonic::RTI: return "RTI";
+            case Mnemonic::RTS: return "RTS";
+            case Mnemonic::SBC: return "SBC";
+            case Mnemonic::SEC: return "SEC";
+            case Mnemonic::SED: return "SED";
+            case Mnemonic::SEI: return "SEI";
+            case Mnemonic::STA: return "STA";
+            case Mnemonic::STX: return "STX";
+            case Mnemonic::STY: return "STY";
+            case Mnemonic::TAX: return "TAX";
+            case Mnemonic::TAY: return "TAY";
+            case Mnemonic::TSX: return "TSX";
+            case Mnemonic::TXA: return "TXA";
+            case Mnemonic::TXS: return "TXS";
+            case Mnemonic::TYA: return "TYA";
+            case Mnemonic::none: return "none";
+            default: return "INVALID";
+        }
+    }
+
+    inline std::string to_string(AddressingMode mode)
+    {
+        switch (mode)
+            {
+            case AddressingMode::A:     return "A";
+            case AddressingMode::abs:   return "abs";
+            case AddressingMode::absX:  return "abs,X";
+            case AddressingMode::absY:  return "abs,Y";
+            case AddressingMode::imm:   return "#imm";
+            case AddressingMode::impl:  return "impl";
+            case AddressingMode::ind:   return "(ind)";
+            case AddressingMode::Xind:  return "(X,ind)";
+            case AddressingMode::indY:  return "(ind),Y";
+            case AddressingMode::rel:   return "rel";
+            case AddressingMode::zpg:   return "zpg";
+            case AddressingMode::zpgX:  return "zpg,X";
+            case AddressingMode::zpgY:  return "zpg,Y";
+            case AddressingMode::none:  return "none";
+            default:                    return "INVALID";
+        }
+    }
 
 }
