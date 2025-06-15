@@ -56,6 +56,10 @@ namespace _6502
                 execute_BVC(instruction);
                 break;
 
+            case Mnemonic::BVS:
+                execute_BVS(instruction);
+                break;
+
             case Mnemonic::CLC:
                 execute_CLC(instruction);
                 break;

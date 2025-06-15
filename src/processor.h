@@ -43,6 +43,7 @@ namespace _6502
         void execute_BPL(Instruction instruction);
         void execute_BRK(Instruction instruction);
         void execute_BVC(Instruction instruction);
+        void execute_BVS(Instruction instruction);
 
         void execute_CLC(Instruction instruction);
         void execute_CLD(Instruction instruction);

@@ -30,7 +30,7 @@ namespace _6502
     {
         none = -1,
         ADC, AND, ASL,
-        BCC, BCS, BEQ, BIT, BMI, BNE, BPL, BRK, BVC,
+        BCC, BCS, BEQ, BIT, BMI, BNE, BPL, BRK, BVC, BVS,
         CLC, CLD, CLI, CLV, CMP, CPX, CPY,
         DEC, DEX, DEY,
         EOR,
@@ -175,21 +175,21 @@ namespace _6502
         Instruction{0x6E, 3, 6, Mnemonic::ROR, AddressingMode::abs},
         Instruction{0x6F, 0, 0, Mnemonic::none, AddressingMode::none},
 
-        Instruction{0x70, 0, 0, Mnemonic::none, AddressingMode::none},
-        Instruction{0x71, 0, 0, Mnemonic::none, AddressingMode::none},
+        Instruction{0x70, 2, 2, Mnemonic::BVS, AddressingMode::rel},
+        Instruction{0x71, 2, 5, Mnemonic::ADC, AddressingMode::indY},
         Instruction{0x72, 0, 0, Mnemonic::none, AddressingMode::none},
         Instruction{0x73, 0, 0, Mnemonic::none, AddressingMode::none},
         Instruction{0x74, 0, 0, Mnemonic::none, AddressingMode::none},
-        Instruction{0x75, 0, 0, Mnemonic::none, AddressingMode::none},
-        Instruction{0x76, 0, 0, Mnemonic::none, AddressingMode::none},
+        Instruction{0x75, 2, 4, Mnemonic::ADC, AddressingMode::zpgX},
+        Instruction{0x76, 2, 6, Mnemonic::ROR, AddressingMode::zpgX},
         Instruction{0x77, 0, 0, Mnemonic::none, AddressingMode::none},
-        Instruction{0x78, 0, 0, Mnemonic::none, AddressingMode::none},
-        Instruction{0x79, 0, 0, Mnemonic::none, AddressingMode::none},
+        Instruction{0x78, 1, 2, Mnemonic::SEI, AddressingMode::impl},
+        Instruction{0x79, 3, 4, Mnemonic::ADC, AddressingMode::absY},
         Instruction{0x7A, 0, 0, Mnemonic::none, AddressingMode::none},
         Instruction{0x7B, 0, 0, Mnemonic::none, AddressingMode::none},
         Instruction{0x7C, 0, 0, Mnemonic::none, AddressingMode::none},
-        Instruction{0x7D, 0, 0, Mnemonic::none, AddressingMode::none},
-        Instruction{0x7E, 0, 0, Mnemonic::none, AddressingMode::none},
+        Instruction{0x7D, 3, 4, Mnemonic::ADC, AddressingMode::absX},
+        Instruction{0x7E, 3, 7, Mnemonic::ROR, AddressingMode::absX},
         Instruction{0x7F, 0, 0, Mnemonic::none, AddressingMode::none},
 
         Instruction{0x80, 0, 0, Mnemonic::none, AddressingMode::none},
@@ -345,6 +345,7 @@ namespace _6502
             case Mnemonic::BPL: return "BPL";
             case Mnemonic::BRK: return "BRK";
             case Mnemonic::BVC: return "BVC";
+            case Mnemonic::BVS: return "BVS";
             case Mnemonic::CLC: return "CLC";
             case Mnemonic::CLD: return "CLD";
             case Mnemonic::CLI: return "CLI";
