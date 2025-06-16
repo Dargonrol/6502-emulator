@@ -4,7 +4,7 @@
 
 namespace _6502
 {
-    void CPU::execute(Instruction instruction)
+    void CPU::execute(const Instruction& instruction)
     {
         switch (instruction.mnemonic)
         {
@@ -233,11 +233,7 @@ namespace _6502
                 break;
 
             default:
-                printf("PC: 0x%X | Unknown Instruction: %s , addressing mode: %s\n",
-                    PC.read(),
-                    to_string(instruction.mnemonic).c_str(),
-                    to_string(instruction.addressing_mode).c_str()
-                    );
+                printUnknownInstrMsg(instruction);
                 break;
         }
     }
@@ -248,7 +244,7 @@ namespace _6502
         CPU::execute(instruction);
     }
 
-    void CPU::execute_ADC(Instruction instruction)
+    void CPU::execute_ADC(const Instruction& instruction)
     {
         switch (instruction.addressing_mode)
         {
@@ -277,12 +273,17 @@ namespace _6502
                 break;
 
             default:
-                printf("PC: 0x%X | Unknown Instruction: %s , addressing mode: %s\n",
+                printUnknownInstrMsg(instruction);
+        }
+    }
+
+    void CPU::printUnknownInstrMsg(const Instruction &instruction) const
+    {
+        printf("PC: 0x%X | Unknown Instruction: %s , addressing mode: %s\n",
                     PC.read(),
                     to_string(instruction.mnemonic).c_str(),
                     to_string(instruction.addressing_mode).c_str()
                     );
-        }
     }
 
 
