@@ -1,5 +1,7 @@
+#include <algorithm>
 #include <iostream>
 #include <ctime> // only to generate random values
+#include <random>
 
 #include "processor.h"
 
