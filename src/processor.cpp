@@ -1,6 +1,7 @@
 #include "processor.h"
 
 #include <cstdio>
+#include <fstream>
 
 namespace _6502
 {
@@ -242,6 +243,26 @@ namespace _6502
     {
         Instruction instruction = instruction_set[op_code];
         CPU::execute(instruction);
+    }
+
+    void CPU::load_from_disk(const std::filesystem::path& path)
+    {
+        std::ifstream file(path, std::ios::binary | std::ios::ate);
+        if (!file) return;
+
+        // Get file size
+        std::streamsize size = file.tellg();
+        file.seekg(0, std::ios::beg);
+
+        // Read into buffer
+        std::vector<Byte> buffer(size);
+        if (!file.read(reinterpret_cast<char*>(buffer.data()), size))
+            return;
+
+        for (size_t i = 0; i < memory64.data_.size(); ++i) 
+        {
+            memory64.data_[i] = buffer[i];
+        }
     }
 
     void CPU::execute_ADC(const Instruction& instruction)

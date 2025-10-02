@@ -1,5 +1,7 @@
 #pragma once
 
+#include <filesystem>
+
 #include "memory.h"
 #include "Instructionset.h"
 
@@ -17,6 +19,8 @@ namespace _6502
     public:
         void execute(const Instruction& instruction);
         void execute(Byte op_code);
+
+        void load_from_disk(const std::filesystem::path& path);
 
     public:
         int CLOCK_SPEED = 1000000;

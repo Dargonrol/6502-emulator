@@ -14,7 +14,6 @@ namespace _6502 {
     public:
         Memory64k();
 
-    private:
         std::array<Byte, 0x10000> data_{};
     };
 

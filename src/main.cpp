@@ -10,7 +10,9 @@ int main()
     srand(time(nullptr));
     std::cout << "Welcome to the 6502 emulator <3";
 
-    _6502::CPU cpu;
+    _6502::CPU cpu();
+
+    
 
     return 0;
 }
